@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [scripts]
-word_counter = "python -m src.word_counter.word_counter"
+word_counter = "pipenv run python -m src.word_counter.word_counter"
 format = "ruff format ."
 type_check = "mypy ."
 
