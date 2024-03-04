@@ -3,9 +3,17 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
+[scripts]
+word_counter = "python -m src.word_counter.word_counter"
+format = "ruff format ."
+type_check = "mypy ."
+
 [packages]
+click = "*"
 
 [dev-packages]
+mypy = "*"
+ruff = "*"
 
 [requires]
 python_version = "3.12"
