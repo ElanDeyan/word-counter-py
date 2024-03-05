@@ -16,7 +16,7 @@ def size(filename: Path, unit: str):
     file_size: float = file_size_in_bytes
 
     unit_type = size_unit_from_str(unit)
-    
+
     match unit_type:
         case SizeUnit.BYTES:
             file_size = float(file_size_in_bytes)

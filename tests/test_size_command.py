@@ -11,6 +11,7 @@ EXAMPLE_FILE_NAME = "example.txt"
 def example_size_in_bytes():
     return Path(EXAMPLE_DIRECTORY).stat().st_size
 
+
 def test_size(example_size_in_bytes: int):
     runner = CliRunner()
     result = runner.invoke(cli, ["size", EXAMPLE_DIRECTORY, "--unit", "B"])

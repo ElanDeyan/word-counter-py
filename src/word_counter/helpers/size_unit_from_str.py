@@ -2,11 +2,11 @@ import click
 from src.word_counter.commands.size.SizeUnits import SizeUnit
 
 
-def size_unit_from_str(string: str) -> SizeUnit:    
+def size_unit_from_str(string: str) -> SizeUnit:
     """
     The function `size_unit_from_str` converts a string to a SizeUnit enum, raising an exception for
     unrecognized size units.
-    
+
     :param string: The `string` parameter is a string value that represents a size unit. The function
     `size_unit_from_str` attempts to convert this string into a `SizeUnit` enum value. If the string is
     not recognized as a valid size unit, it raises a `click.exceptions.BadParameter` exception with
@@ -21,4 +21,3 @@ def size_unit_from_str(string: str) -> SizeUnit:
         return SizeUnit(string)
     except ValueError:
         raise click.exceptions.BadParameter(f"Unrecognized size unit: {string}.")
-    
