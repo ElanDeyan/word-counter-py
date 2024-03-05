@@ -8,6 +8,7 @@ word_counter = "pipenv run python -m src.word_counter.main"
 format = "ruff format ."
 type_check = "mypy ."
 bandit = "bandit ."
+test = "pytest"
 
 [packages]
 click = "*"
