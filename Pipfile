@@ -7,6 +7,7 @@ name = "pypi"
 word_counter = "pipenv run python -m src.word_counter.word_counter"
 format = "ruff format ."
 type_check = "mypy ."
+bandit = "bandit ."
 
 [packages]
 click = "*"
@@ -14,6 +15,7 @@ click = "*"
 [dev-packages]
 mypy = "*"
 ruff = "*"
+bandit = "*"
 
 [requires]
 python_version = "3.12"
