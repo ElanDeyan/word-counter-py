@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [scripts]
-word_counter = "pipenv run python -m src.word_counter.word_counter"
+word_counter = "pipenv run python -m src.word_counter.main"
 format = "ruff format ."
 type_check = "mypy ."
 bandit = "bandit ."
@@ -16,6 +16,7 @@ click = "*"
 mypy = "*"
 ruff = "*"
 bandit = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.12"
