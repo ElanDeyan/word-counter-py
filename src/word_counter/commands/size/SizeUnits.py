@@ -10,4 +10,4 @@ class SizeUnit(Enum):
 
     @classmethod
     def values(cls) -> list[str]:
-        return [unit.value for unit in SizeUnit._member_map_.values()]
+        return [unit.value for unit in cls._member_map_.values()]
