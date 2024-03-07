@@ -8,10 +8,7 @@ from src.word_counter.helpers.size.size_from_bytes import size_from_bytes
 from src.word_counter.helpers.size.size_unit_from_str import size_unit_from_str
 
 
-unit_help_message = f"""
-Size unit (written in UPPERCASE). Default "B".
-Possible values: {SizeUnit.values()}
-"""
+unit_help_message = "Size unit (written in UPPERCASE)."
 
 
 @click.command
@@ -23,7 +20,7 @@ Possible values: {SizeUnit.values()}
 @click.option(
     "--unit",
     type=click.Choice(SizeUnit.values()),
-    default=SizeUnit.BYTES,
+    default=SizeUnit.BYTES.value,
     show_default=True,
     help=unit_help_message,
 )
