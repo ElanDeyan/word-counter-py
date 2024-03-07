@@ -7,3 +7,7 @@ class SizeUnit(Enum):
     MEGABYTES = "MB"
     GIGABYTES = "GB"
     TERABYTES = "TB"
+
+    @classmethod
+    def values(cls) -> list[str]:
+        return [unit.value for unit in SizeUnit._member_map_.values()]
