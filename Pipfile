@@ -12,6 +12,12 @@ test = "pytest"
 
 [packages]
 click = "*"
+pyyaml = "*"
+tabulate = "*"
+toml = "*"
+types-toml = "*"
+types-pyyaml = "*"
+types-tabulate = "*"
 
 [dev-packages]
 mypy = "*"
