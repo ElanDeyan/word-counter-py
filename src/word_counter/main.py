@@ -14,7 +14,7 @@ from src.word_counter.commands.words.command import words
     type=click.Choice(OutputFormats.values(), case_sensitive=False),
     default=OutputFormats.PLAINTEXT.value,
     show_default=True,
-    prompt="Choose a format: "
+    prompt="Choose a format"
 )
 def cli(output_format: str):
     click.get_current_context().obj = {"format": output_format}
