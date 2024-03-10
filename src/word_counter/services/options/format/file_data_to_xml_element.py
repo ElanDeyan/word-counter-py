@@ -1,3 +1,4 @@
+from xml.dom.minidom import parseString
 from xml.etree.ElementTree import Element, SubElement, tostring as xml_to_str
 
 
@@ -18,4 +19,8 @@ def format_to_xml(data: list[dict[str, object]]) -> str:
         element = file_data_to_xml_element(file_data)
         root.append(element)
 
-    return xml_to_str(root, encoding="utf-8")
+    xml_str = xml_to_str(root, encoding="utf-8")
+
+    dom = parseString(xml_str)
+
+    return dom.toprettyxml()
