@@ -2,12 +2,22 @@ import click
 
 from src.word_counter.commands.lines.command import lines
 from src.word_counter.commands.size.command import size
+from src.word_counter.options.format.OutputFormats import OutputFormats
+
 from src.word_counter.commands.words.command import words
 
 
 @click.group
-def cli():
-    pass
+@click.option(
+    "--format",
+    "output_format",
+    type=click.Choice(OutputFormats.values(), case_sensitive=False),
+    default=OutputFormats.PLAINTEXT.value,
+    show_default=True,
+    prompt="Choose a format: "
+)
+def cli(output_format: str):
+    click.get_current_context().obj = {"format": output_format}
 
 
 cli.add_command(size)

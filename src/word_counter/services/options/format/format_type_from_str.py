@@ -1,5 +1,5 @@
 import click
-from src.word_counter.commands.size.OutputFormats import OutputFormats
+from src.word_counter.options.format.OutputFormats import OutputFormats
 
 
 def format_type_from_str(format_: str) -> OutputFormats:
