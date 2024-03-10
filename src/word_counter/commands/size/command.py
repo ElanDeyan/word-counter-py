@@ -32,8 +32,9 @@ unit_help_message = "Size unit (written in UPPERCASE)."
 )
 def size(ctx: click.Context, files: list[Path], unit: str):
     output_format: str = ctx.obj["format"]
-    size_unit = size_unit_from_str(unit)
     format_type = format_type_from_str(output_format)
+
+    size_unit = size_unit_from_str(unit)
 
     files_and_sizes: list[dict[str, object]] = []
 
