@@ -17,10 +17,12 @@ def words(ctx: click.Context, files: list[Path]):
     format_type = format_type_from_str(output_format)
     files_and_words: list[dict[str, object]] = []
 
-    for file in files:
-        with open(file, "r") as f:
+    for filepath in files:
+        with open(filepath, "r") as f:
             words_list = f.read().split()
-            files_and_words.append({"file": file.name, "words_count": len(words_list)})
+            files_and_words.append(
+                {"file": filepath.as_posix(), "words_count": len(words_list)}
+            )
 
     data = output_formatter(files_and_words, format_type)
 
