@@ -2,6 +2,6 @@ from typing import TypedDict
 
 
 class FileData(TypedDict):
-    file: str
+    filepath: str
     size: float
     unit: str
