@@ -3,9 +3,8 @@ import click
 from src.word_counter.commands.chars.command import chars
 from src.word_counter.commands.lines.command import lines
 from src.word_counter.commands.size.command import size
-from src.word_counter.options.format.OutputFormats import OutputFormats
-
 from src.word_counter.commands.words.command import words
+from src.word_counter.options.format.OutputFormats import OutputFormats
 
 
 @click.group

@@ -29,7 +29,7 @@ unit_help_message = "Size unit (written in UPPERCASE)."
     default=SizeUnit.BYTES.value,
     show_default=True,
     help=unit_help_message,
-    prompt="Choose a unit"
+    prompt="Choose a unit",
 )
 def size(ctx: click.Context, files: list[Path], unit: str):
     output_format: str = ctx.obj["format"]
