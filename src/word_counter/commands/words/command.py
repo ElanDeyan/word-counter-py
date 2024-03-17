@@ -1,6 +1,7 @@
 from pathlib import Path
 import click
 
+from src.word_counter.core.words_count import words_count
 from src.word_counter.services.options.format.format_type_from_str import (
     format_type_from_str,
 )
@@ -18,11 +19,11 @@ def words(ctx: click.Context, files: list[Path]):
     files_and_words: list[dict[str, object]] = []
 
     for filepath in files:
-        with open(filepath, "r") as f:
-            words_list = f.read().split()
-            files_and_words.append(
-                {"file": filepath.as_posix(), "words_count": len(words_list)}
-            )
+        files_and_words.append({
+            "filepath": filepath.as_posix(),
+             "words_count": words_count(filepath)
+            }
+        )
 
     data = output_formatter(files_and_words, format_type)
 
