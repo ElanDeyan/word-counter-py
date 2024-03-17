@@ -1,5 +1,5 @@
 import click
-from src.word_counter.commands.size.SizeUnits import SizeUnit
+from src.word_counter.utils.SizeUnits import SizeUnit
 
 
 def size_unit_from_str(string: str) -> SizeUnit:
