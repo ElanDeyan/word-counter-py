@@ -8,7 +8,7 @@ from src.word_counter.services.options.format.file_data_to_xml_element import (
 )
 
 
-def output_formatter(data: list[dict[str, object]], format_: OutputFormats) -> str:
+def output_formatter(data: list[dict[str, object]], format_: OutputFormats) -> str:    
     serialized_data = [dict(file_data) for file_data in data]
 
     match format_:
