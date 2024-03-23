@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import TextIO
 import click
 
 from src.word_counter.commands.common_options import common_options
@@ -27,17 +26,19 @@ def chars(
     files_and_chars: list[dict[str, object]] = []
 
     if ctx.obj["stdin"] is not None:
-        stdin_output: TextIO = ctx.obj["stdin"]
+        stdin_output: str = ctx.obj["stdin"].read()
 
         files_and_chars.append({"filepath": "stdin", "chars": char_count(stdin_output)})
 
     for filepath in files:
-        files_and_chars.append(
-            {
-                "filepath": filepath.as_posix(),
-                "chars": char_count(filepath, ignore_line_sep),
-            }
-        )
+        with open(filepath, "r") as f:
+            file_content = f.read()
+            files_and_chars.append(
+                {
+                    "filepath": filepath.as_posix(),
+                    "chars": char_count(file_content, ignore_line_sep),
+                }
+            )
 
     data = output_formatter(files_and_chars, format_type)
 

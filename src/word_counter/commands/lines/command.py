@@ -1,5 +1,4 @@
 from pathlib import Path
-from typing import TextIO
 import click
 
 from src.word_counter.commands.common_options import common_options
@@ -24,16 +23,18 @@ def lines(ctx: click.Context, files: list[Path], output_format: str):
     files_and_lines: list[dict[str, object]] = []
 
     if ctx.obj["stdin"] is not None:
-        stdin_output: TextIO = ctx.obj["stdin"]
+        stdin_output: str = ctx.obj["stdin"].read()
 
         files_and_lines.append(
             {"filepath": "stdin", "lines": lines_count(stdin_output)}
         )
 
     for filepath in files:
-        files_and_lines.append(
-            {"filepath": filepath.as_posix(), "lines": lines_count(filepath)}
-        )
+        with open(filepath, "r") as f:
+            file_content = f.read()
+            files_and_lines.append(
+                {"filepath": filepath.as_posix(), "lines": lines_count(file_content)}
+            )
 
     data = output_formatter(files_and_lines, format_type)
 

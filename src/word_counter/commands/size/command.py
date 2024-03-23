@@ -39,16 +39,21 @@ def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
     files_and_sizes: list[dict[str, object]] = []
 
     if ctx.obj["stdin"] is not None:
-        stdin_output = ctx.obj["stdin"]
+        stdin_output: str = ctx.obj["stdin"].read()
 
         files_and_sizes.append(
             {"filepath": "stdin", "size": filesize(stdin_output, size_unit)}
         )
 
     for filepath in files:
-        files_and_sizes.append(
-            {"filepath": filepath.as_posix(), "size": filesize(filepath, size_unit)}
-        )
+        with open(filepath, "r") as f:
+            file_content = f.read()
+            files_and_sizes.append(
+                {
+                    "filepath": filepath.as_posix(),
+                    "size": filesize(file_content, size_unit),
+                }
+            )
 
     data = output_formatter(files_and_sizes, format_type)
 
