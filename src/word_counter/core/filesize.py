@@ -1,10 +1,18 @@
+import os
 from pathlib import Path
+from typing import TextIO
 
 from src.word_counter.utils.SizeUnits import SizeUnit
 
 
-def filesize(filepath: Path, output_unit: SizeUnit) -> str:
-    size_in_bytes = filepath.stat().st_size
+def filesize(filepath: Path | TextIO, output_unit: SizeUnit) -> str:
+    size_in_bytes: int
+
+    if isinstance(filepath, Path):
+        size_in_bytes = filepath.stat().st_size
+    else:
+        filepath.seek(0, os.SEEK_END)
+        size_in_bytes = filepath.tell()
 
     if output_unit is SizeUnit.BYTES:
         return f"{size_in_bytes}B"
