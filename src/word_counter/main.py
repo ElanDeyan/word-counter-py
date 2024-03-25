@@ -10,6 +10,10 @@ from src.word_counter.commands.words.command import words
 
 @click.group
 def cli():
+    """
+    CLI tool to run a COMMAND with files as ARGS (or from stdin like `cat`) and outputs the result.
+    Based in unix's `wc` tool.
+    """
     click.get_current_context().obj = {"stdin": None}
 
     if not sys.stdin.isatty():
