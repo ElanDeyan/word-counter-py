@@ -6,6 +6,8 @@ from src.word_counter.core.char_count import char_count
 from src.word_counter.core.filesize import filesize
 from src.word_counter.core.lines_count import lines_count
 from src.word_counter.core.words_count import words_count
+from src.word_counter.docs.options.ignore_line_sep_help import IGNORE_LINE_SEP_HELP
+from src.word_counter.docs.options.unit_help import UNIT_HELP
 from src.word_counter.services.options.format.output_formatter import output_formatter
 from src.word_counter.utils.SizeUnits import SizeUnit
 from src.word_counter.services.commands.size.size_unit_from_str import (
@@ -29,9 +31,15 @@ from src.word_counter.services.options.format.format_type_from_str import (
     type=click.Choice(SizeUnit.values(), case_sensitive=False),
     default=SizeUnit.BYTES.value,
     show_default=True,
+    help=UNIT_HELP,
 )
 @click.option(
-    "--ignore-line-sep", is_flag=True, default=False, show_default=True, type=bool
+    "--ignore-line-sep",
+    is_flag=True,
+    default=False,
+    show_default=True,
+    type=bool,
+    help=IGNORE_LINE_SEP_HELP,
 )
 def scan(
     ctx: click.Context,
@@ -40,6 +48,9 @@ def scan(
     unit: str,
     ignore_line_sep: bool,
 ):
+    """
+    Scans their content for size, words, lines, and characters, and outputs the data in a specified format.
+    """
     format_type = format_type_from_str(output_format)
 
     size_unit = size_unit_from_str(unit)

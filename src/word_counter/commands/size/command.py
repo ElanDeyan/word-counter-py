@@ -3,6 +3,7 @@ from pathlib import Path
 
 from src.word_counter.commands.common_options import common_options
 from src.word_counter.core.filesize import filesize
+from src.word_counter.docs.options.unit_help import UNIT_HELP
 from src.word_counter.utils.SizeUnits import SizeUnit
 from src.word_counter.services.commands.size.size_unit_from_str import (
     size_unit_from_str,
@@ -11,9 +12,6 @@ from src.word_counter.services.options.format.format_type_from_str import (
     format_type_from_str,
 )
 from src.word_counter.services.options.format.output_formatter import output_formatter
-
-
-unit_help_message = "Size unit (written in UPPERCASE)."
 
 
 @click.command
@@ -29,9 +27,12 @@ unit_help_message = "Size unit (written in UPPERCASE)."
     type=click.Choice(SizeUnit.values(), case_sensitive=False),
     default=SizeUnit.BYTES.value,
     show_default=True,
-    help=unit_help_message,
+    help=UNIT_HELP,
 )
 def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
+    """
+    Calculates the sizes of the files, and outputs the data in the specified format.
+    """
     format_type = format_type_from_str(output_format)
 
     size_unit = size_unit_from_str(unit)
@@ -58,5 +59,3 @@ def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
     data = output_formatter(files_and_sizes, format_type)
 
     click.echo(data)
-
-    return files_and_sizes
