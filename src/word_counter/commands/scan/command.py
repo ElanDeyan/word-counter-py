@@ -49,7 +49,7 @@ def scan(
     ignore_line_sep: bool,
 ):
     """
-    Scans their content for size, words, lines, and characters, and outputs the data in a specified format.
+    Scans FILES content for size, words, lines, and characters, and outputs the data in a specified format.
     """
     format_type = format_type_from_str(output_format)
 

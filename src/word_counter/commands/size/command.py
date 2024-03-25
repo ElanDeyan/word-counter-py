@@ -31,7 +31,7 @@ from src.word_counter.services.options.format.output_formatter import output_for
 )
 def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
     """
-    Calculates the sizes of the files, and outputs the data in the specified format.
+    Calculates the sizes of the FILES, and outputs the data in the specified format.
     """
     format_type = format_type_from_str(output_format)
 
