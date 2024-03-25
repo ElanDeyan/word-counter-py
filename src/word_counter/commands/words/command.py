@@ -16,6 +16,9 @@ from src.word_counter.services.options.format.output_formatter import output_for
 )
 @common_options
 def words(ctx: click.Context, files: list[Path], output_format: str):
+    """
+    Counts the number of words in each input from FILES, and formats the output based on the specified format type.
+    """
     format_type = format_type_from_str(output_format)
     files_and_words: list[dict[str, object]] = []
 
