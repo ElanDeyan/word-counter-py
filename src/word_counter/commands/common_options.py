@@ -14,7 +14,7 @@ def common_options(f: Callable[..., Any]):
             type=click.Choice(OutputFormats.values(), case_sensitive=False),
             default=OutputFormats.PLAINTEXT.value,
             show_default=True,
-            help=OUTPUT_FORMAT_HELP
+            help=OUTPUT_FORMAT_HELP,
         ),
     ]
     return functools.reduce(lambda x, opt: opt(x), options, f)
