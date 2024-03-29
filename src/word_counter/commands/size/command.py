@@ -47,14 +47,12 @@ def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
         )
 
     for filepath in files:
-        with open(filepath, "r") as f:
-            file_content = f.read()
-            files_and_sizes.append(
-                {
-                    "filepath": filepath.as_posix(),
-                    "size": filesize(file_content, size_unit),
-                }
-            )
+        files_and_sizes.append(
+            {
+                "filepath": filepath.as_posix(),
+                "size": filesize(filepath, size_unit),
+            }
+        )
 
     data = output_formatter(files_and_sizes, format_type)
 
