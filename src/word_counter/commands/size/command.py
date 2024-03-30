@@ -3,6 +3,7 @@ from pathlib import Path
 
 from src.word_counter.commands.common_options import common_options
 from src.word_counter.core.filesize import filesize
+from src.word_counter.docs.options.decimal_precision_help import DECIMAL_PRECISION_HELP
 from src.word_counter.docs.options.unit_help import UNIT_HELP
 from src.word_counter.utils.SizeUnits import SizeUnit
 from src.word_counter.services.commands.size.size_unit_from_str import (
@@ -24,12 +25,25 @@ from src.word_counter.services.options.format.output_formatter import output_for
 @common_options
 @click.option(
     "--unit",
-    type=click.Choice(SizeUnit.values(), case_sensitive=False),
-    default=SizeUnit.BYTES.value,
+    type=click.Choice(SizeUnit.short_names(), case_sensitive=False),
+    default=SizeUnit.BYTES.value.short_name,
     show_default=True,
     help=UNIT_HELP,
 )
-def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
+@click.option(
+    "--decimal-precision",
+    type=click.INT,
+    default=2,
+    show_default=True,
+    help=DECIMAL_PRECISION_HELP,
+)
+def size(
+    ctx: click.Context,
+    files: list[Path],
+    output_format: str,
+    unit: str,
+    decimal_precision: int,
+):
     """
     Calculates the sizes of the FILES, and outputs the data in the specified format.
     """
@@ -43,14 +57,17 @@ def size(ctx: click.Context, files: list[Path], output_format: str, unit: str):
         stdin_output: str = ctx.obj["stdin"].read()
 
         files_and_sizes.append(
-            {"filepath": "stdin", "size": filesize(stdin_output, size_unit)}
+            {
+                "filepath": "stdin",
+                "size": filesize(stdin_output, size_unit, decimal_precision),
+            }
         )
 
     for filepath in files:
         files_and_sizes.append(
             {
                 "filepath": filepath.as_posix(),
-                "size": filesize(filepath, size_unit),
+                "size": filesize(filepath, size_unit, decimal_precision),
             }
         )
 
