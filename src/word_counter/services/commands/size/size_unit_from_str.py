@@ -18,6 +18,18 @@ def size_unit_from_str(string: str) -> SizeUnit:
     :raise: `click.exceptions.BadParameter`.
     """
     try:
-        return SizeUnit(string)
+        match string.upper():
+            case SizeUnit.BYTES.value.short_name:
+                return SizeUnit.BYTES
+            case SizeUnit.KILOBYTES.value.short_name:
+                return SizeUnit.KILOBYTES
+            case SizeUnit.MEGABYTES.value.short_name:
+                return SizeUnit.MEGABYTES
+            case SizeUnit.GIGABYTES.value.short_name:
+                return SizeUnit.GIGABYTES
+            case SizeUnit.TERABYTES.value.short_name:
+                return SizeUnit.TERABYTES
+            case _:
+                raise ValueError()
     except ValueError:
         raise click.exceptions.BadParameter(f"Unrecognized size unit: {string}.")

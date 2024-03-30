@@ -28,7 +28,7 @@ from src.word_counter.services.options.format.format_type_from_str import (
 @common_options
 @click.option(
     "--unit",
-    type=click.Choice(SizeUnit.values(), case_sensitive=False),
+    type=click.Choice(SizeUnit.short_names(), case_sensitive=False),
     default=SizeUnit.BYTES.value,
     show_default=True,
     help=UNIT_HELP,
