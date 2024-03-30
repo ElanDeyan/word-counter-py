@@ -1,4 +1,4 @@
-## **0.1.0**&emsp;<sub><sup>2024-03-23 (3eeb77ab7a98ee038085f72e3db768ed5d854061...2a5e3b78b13474aad98b694d84f8e276fb84c175)</sup></sub>
+## **0.1.0**&emsp;<sub><sup>2024-03-30 (3eeb77ab7a98ee038085f72e3db768ed5d854061...6684e193d1c75489993888a54ee1a88460009dae)</sup></sub>
 
 ### Features
 
@@ -33,6 +33,7 @@
 - adds variadic files arguments and refactors (70f7d4ae1f184744a21d2817a75c93a08582a11c)
 - adds \-\-format option to the output format (03f0c5a9ebc1a49324e2649a91dbe3f1fe57eb47)
 - adds prompt and case insensitive for unit option (5f3905b78b3ba5cc3e2ccc981c029bf6819d302a)
+- add a new option to specify decimal precision (d27623893f89ec682e6dc3ee224beac730cf50e3)
 
 ##### &ensp;`words`
 
@@ -45,13 +46,14 @@
 - improves prompt message (d94f5c0ba69380059966bc71374311f02126daf6)
 - fixes logic for conversion between bytes to other formats (9de6e28f6768cd70189e780ddb15828d2fd8b20d)
 
-### First commit
+### ? ? ?
 
 - Initial commit (3eeb77ab7a98ee038085f72e3db768ed5d854061)
 
 
 ### BREAKING CHANGES
 -  now core functions handle only str data (b6fea3e82ce4e1e6db73d113aac9322a37d418c0)
+-  filesize now backs to deal with path (8d0f6c3b47a0bd451dce62566a5bf80b2f48d376)
 <br>
 
 
