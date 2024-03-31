@@ -1,4 +1,22 @@
+from pathlib import Path
+import pytest
 from src.word_counter.utils.SizeUnits import SizeUnit
+
+
+@pytest.fixture
+def test_data_directory():
+    return "./data"
+
+
+@pytest.fixture
+def test_files(test_data_directory: str) -> list[Path]:
+    dir_path = Path(test_data_directory)
+
+    files = list(dir_path.glob("*"))
+
+    files = [Path(file) for file in files if file.is_file()]
+
+    return files
 
 
 def convert_size(
