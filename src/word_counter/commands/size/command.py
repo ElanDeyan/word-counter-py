@@ -1,7 +1,7 @@
 import click
 from pathlib import Path
 
-from src.word_counter.commands.common_options import common_options
+from src.word_counter.options.common_options import common_options
 from src.word_counter.core.filesize import filesize
 from src.word_counter.docs.options.decimal_precision_help import DECIMAL_PRECISION_HELP
 from src.word_counter.docs.options.unit_help import UNIT_HELP

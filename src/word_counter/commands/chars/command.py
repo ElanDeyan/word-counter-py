@@ -1,7 +1,7 @@
 from pathlib import Path
 import click
 
-from src.word_counter.commands.common_options import common_options
+from src.word_counter.options.common_options import common_options
 from src.word_counter.core.char_count import char_count
 from src.word_counter.docs.options.ignore_line_sep_help import IGNORE_LINE_SEP_HELP
 from src.word_counter.services.options.format.format_type_from_str import (
@@ -23,7 +23,7 @@ from src.word_counter.services.options.format.output_formatter import output_for
     is_flag=True,
     default=False,
     show_default=True,
-    type=bool,
+    type=click.BOOL,
     help=IGNORE_LINE_SEP_HELP,
 )
 def chars(
@@ -42,7 +42,7 @@ def chars(
         files_and_chars.append({"filepath": "stdin", "chars": char_count(stdin_output)})
 
     for filepath in files:
-        with open(filepath, "r") as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             file_content = f.read()
             files_and_chars.append(
                 {

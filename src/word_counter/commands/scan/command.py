@@ -1,7 +1,8 @@
 from pathlib import Path
 import click
 
-from src.word_counter.commands.common_options import common_options
+from src.word_counter.docs.options.decimal_precision_help import DECIMAL_PRECISION_HELP
+from src.word_counter.options.common_options import common_options
 from src.word_counter.core.char_count import char_count
 from src.word_counter.core.filesize import filesize
 from src.word_counter.core.lines_count import lines_count
@@ -29,16 +30,23 @@ from src.word_counter.services.options.format.format_type_from_str import (
 @click.option(
     "--unit",
     type=click.Choice(SizeUnit.short_names(), case_sensitive=False),
-    default=SizeUnit.BYTES.value,
+    default=SizeUnit.BYTES.value.short_name,
     show_default=True,
     help=UNIT_HELP,
+)
+@click.option(
+    "--decimal-precision",
+    type=click.INT,
+    default=2,
+    show_default=True,
+    help=DECIMAL_PRECISION_HELP,
 )
 @click.option(
     "--ignore-line-sep",
     is_flag=True,
     default=False,
     show_default=True,
-    type=bool,
+    type=click.BOOL,
     help=IGNORE_LINE_SEP_HELP,
 )
 def scan(
@@ -46,6 +54,7 @@ def scan(
     files: list[Path],
     output_format: str,
     unit: str,
+    decimal_precision: int,
     ignore_line_sep: bool,
 ):
     """
@@ -63,7 +72,7 @@ def scan(
         files_data.append(
             {
                 "stdin": {
-                    "size": filesize(stdin_output, size_unit),
+                    "size": filesize(stdin_output, size_unit, decimal_precision),
                     "words": words_count(stdin_output),
                     "lines": lines_count(stdin_output),
                     "chars": char_count(stdin_output, ignore_line_sep),
@@ -72,12 +81,12 @@ def scan(
         )
 
     for file in files:
-        with open(file) as f:
+        with open(file, "r", encoding="utf-8") as f:
             file_content = f.read()
             files_data.append(
                 {
                     f"{file.as_posix()}": {
-                        "size": filesize(file_content, size_unit),
+                        "size": filesize(file, size_unit, decimal_precision),
                         "words": words_count(file_content),
                         "lines": lines_count(file_content),
                         "chars": char_count(file_content, ignore_line_sep),

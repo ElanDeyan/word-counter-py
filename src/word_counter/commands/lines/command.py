@@ -1,7 +1,7 @@
 from pathlib import Path
 import click
 
-from src.word_counter.commands.common_options import common_options
+from src.word_counter.options.common_options import common_options
 from src.word_counter.core.lines_count import lines_count
 from src.word_counter.services.options.format.format_type_from_str import (
     format_type_from_str,
@@ -33,7 +33,7 @@ def lines(ctx: click.Context, files: list[Path], output_format: str):
         )
 
     for filepath in files:
-        with open(filepath, "r") as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             file_content = f.read()
             files_and_lines.append(
                 {"filepath": filepath.as_posix(), "lines": lines_count(file_content)}
