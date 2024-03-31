@@ -7,6 +7,16 @@ from src.word_counter.options.format.OutputFormats import OutputFormats
 
 
 def common_options(f: Callable[..., Any]):
+    """
+    The function `common_options` adds a common command line option for specifying output format to a
+    given function.
+    
+    :param f: Callable[..., Any]
+    :type f: Callable[..., Any]
+    :return: The `common_options` function is returning a new function that wraps the original function
+    `f` with additional options defined in the `options` list. The additional option being added is for
+    specifying the output format, with default value set to `OutputFormats.PLAINTEXT.value`.
+    """
     options = [
         click.option(
             "--format",
