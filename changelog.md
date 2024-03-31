@@ -1,4 +1,4 @@
-## **0.1.0**&emsp;<sub><sup>2024-03-30 (3eeb77ab7a98ee038085f72e3db768ed5d854061...6684e193d1c75489993888a54ee1a88460009dae)</sup></sub>
+## **0.1.0**&emsp;<sub><sup>2024-03-30 (3eeb77ab7a98ee038085f72e3db768ed5d854061...57f7b8dc655ad197d4fe3cb47c19d12df88f36a9)</sup></sub>
 
 ### Features
 
@@ -45,6 +45,7 @@
 
 - improves prompt message (d94f5c0ba69380059966bc71374311f02126daf6)
 - fixes logic for conversion between bytes to other formats (9de6e28f6768cd70189e780ddb15828d2fd8b20d)
+- adds encoding option when opening the file (57f7b8dc655ad197d4fe3cb47c19d12df88f36a9)
 
 ### ? ? ?
 
