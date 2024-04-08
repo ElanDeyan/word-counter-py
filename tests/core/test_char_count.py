@@ -5,9 +5,11 @@ import pytest
 
 from src.word_counter.core.char_count import char_count
 
+
 @pytest.fixture
 def ignore_line_sep():
     return False
+
 
 @pytest.fixture
 def test_files_char_count(test_files: list[Path], ignore_line_sep: bool):
@@ -23,10 +25,12 @@ def test_files_char_count(test_files: list[Path], ignore_line_sep: bool):
     return files_char_count
 
 
-def test_char_count(test_files: list[Path], test_files_char_count: list[int], ignore_line_sep: bool):
+def test_char_count(
+    test_files: list[Path], test_files_char_count: list[int], ignore_line_sep: bool
+):
     files_char_count: list[int] = []
     for test_file in test_files:
-        with open(test_file, 'r', encoding="utf-8") as f:
+        with open(test_file, "r", encoding="utf-8") as f:
             content = f.read()
             files_char_count.append(char_count(content, ignore_line_sep))
 
