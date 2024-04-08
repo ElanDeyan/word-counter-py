@@ -24,6 +24,7 @@ mypy = "*"
 ruff = "*"
 bandit = "*"
 pytest = "*"
+hypothesis = "*"
 
 [requires]
 python_version = "3.12"
