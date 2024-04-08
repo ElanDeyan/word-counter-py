@@ -10,7 +10,7 @@ def common_options(f: Callable[..., Any]):
     """
     The function `common_options` adds a common command line option for specifying output format to a
     given function.
-    
+
     :param f: Callable[..., Any]
     :type f: Callable[..., Any]
     :return: The `common_options` function is returning a new function that wraps the original function

@@ -6,7 +6,7 @@ def format_type_from_str(format_: str) -> OutputFormats:
     """
     The function `format_type_from_str` converts a string to an `OutputFormats` enum and raises an
     exception if the format is unknown.
-    
+
     :param format_: The `format_` parameter is a string representing a format type that needs to be
     converted to an `OutputFormats` enum. The function attempts to convert the string to the
     `OutputFormats` enum, and if it fails due to a `ValueError`, it raises a

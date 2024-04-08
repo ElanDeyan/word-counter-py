@@ -5,7 +5,7 @@ def char_count(content: str, ignore_line_sep: bool = False) -> int:
     """
     The function `char_count` returns the number of characters in a string, optionally ignoring line
     separators.
-    
+
     :param content: The `content` parameter is a string that represents the text content for which you
     want to count the characters
     :type content: str

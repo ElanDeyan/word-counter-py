@@ -12,7 +12,7 @@ def output_formatter(data: list[dict[str, object]], format_: OutputFormats) -> s
     """
     The function `output_formatter` takes a list of dictionaries and a specified output format, then
     serializes the data accordingly.
-    
+
     :param data: The `data` parameter is a list of dictionaries where each dictionary represents a piece
     of data to be formatted
     :type data: list[dict[str, object]]

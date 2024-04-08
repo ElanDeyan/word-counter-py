@@ -3,8 +3,8 @@ from enum import Enum
 
 class OutputFormats(Enum):
     """
-        The class `OutputFormats` defines an enumeration for different output formats and provides a method
-        to retrieve a list of string values from the enumeration.
+    The class `OutputFormats` defines an enumeration for different output formats and provides a method
+    to retrieve a list of string values from the enumeration.
     """
 
     JSON = "json"
